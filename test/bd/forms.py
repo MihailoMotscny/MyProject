@@ -33,6 +33,8 @@ class ArticlesForm(ModelForm):
                 'placeholder': 'Дата'
             })
 
+
+
         }
 
 

@@ -8,6 +8,7 @@ class Artiles(models.Model):
     price=models.CharField('Ціна',max_length=230)
     date=models.DateTimeField('Дата публікації')
 
+
     def __str__(self):
         return self.name_company
 

@@ -3,15 +3,17 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Artiles
+from idcheck.models import Myid
 from .forms import LoginForm
-from .forms import ArticlesForm
+
+from idcheck.forms import MyidForm
 from django.views.generic import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
 
 def home_prices(request):
-    prices=Artiles.objects.all()
+    prices=Myid.objects.all()
     return render(request, 'bd/prices.html',{'prices':prices})
 
 def profil(request):
@@ -21,24 +23,28 @@ def profil(request):
 
 def create(request):
     error = ''
-    idUser=0
+    user_id=''
     if request.method == 'POST':
-        form=ArticlesForm(request.POST)
+        form=MyidForm(request.POST)
         if form.is_valid():
-            idUser=request.user.id
+            user_id = request.user.id
+            form.idcheck = user_id
             form.save()
+
         else:
             error = 'Заповніть всі поля'
 
-    form = ArticlesForm()
+    form = MyidForm()
     data={
         'form':form,
-        'idUser':idUser,
+
+        'user_id':user_id,
         'error':error,
 
     }
 
     return render(request, 'bd/create.html',data)
+
 
 
 def register(response):
