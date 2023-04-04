@@ -1,0 +1,16 @@
+{% extends 'main/test.html'%}
+
+
+{% block title %} Особистий кабінет {% endblock %}
+
+{% block body %}
+
+{% if request.user.is_authenticated %}
+<h1></h1>
+{% else %}
+Авторизуйтеся , будь ласка
+{% endif %}
+
+
+
+{% endblock %}
