@@ -24,17 +24,23 @@ def profil(request):
 def create(request):
     error = ''
     user_id=''
+    context = {}
+    initial_dict = {
+        'idcheck': request.user.id
+    }
+
+    user_id=initial_dict
+
     if request.method == 'POST':
-        form=MyidForm(request.POST)
+        form=MyidForm(request.POST, initial=initial_dict)
         if form.is_valid():
-            user_id = request.user.id
-            form.idcheck = user_id
+
             form.save()
 
         else:
             error = 'Заповніть всі поля'
 
-    form = MyidForm()
+    form = MyidForm(initial=initial_dict)
     data={
         'form':form,
 

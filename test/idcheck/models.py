@@ -10,6 +10,11 @@ class Myid(models.Model):
     date=models.DateTimeField('Дата публікації')
     idcheck = models.CharField('ID:', max_length=230, blank=True)
 
-    def __str__(self,request):
-        idcheck=request.user.id
-        return self.name_company,idcheck
+    # def create(cls, idd):
+    #     iddd = cls(idd=idd)
+    #     # do something with the book
+    #     return iddd
+
+    def __str__(self):
+        #idmy=request.user.id
+        return self.name_company#,idmy
