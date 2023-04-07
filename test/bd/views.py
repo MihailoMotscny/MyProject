@@ -14,10 +14,15 @@ from .forms import RegisterForm
 
 def home_prices(request):
     prices=Myid.objects.all()
+
     return render(request, 'bd/prices.html',{'prices':prices})
 
 def profil(request):
-    return render(request, 'bd/profil.html',{'profil':profil})
+    myid=request.user.id
+    homeid = Myid.objects.all().filter(idcheck=myid)
+    for i in homeid:
+        print("Mi id is ",i)
+    return render(request, 'bd/profil.html',{'homeid':homeid})
 
 
 

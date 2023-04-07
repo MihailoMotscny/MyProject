@@ -4,13 +4,27 @@
 {% block title %} Особистий кабінет {% endblock %}
 
 {% block body %}
+    <div class="features">
+        <table class="table" >
+            <tr >
+                <th class="active">Назва компанії</th>
+                <th class="active">Культура</th>
+                <th class="active">Ціна</th>
+                <th class="active">Дата публікації</th>
+                <th class="active">ID</th>
+            </tr>
+            {% for el in homeid %}
+            <tr >
+                <td class="active">{{ el.name_company }}</td>
+                <td class="active">{{ el.culture }}</td>
+                <td class="active">{{ el.price }}</td>
+                <td class="active">{{ el.date }}</td>
+                <td class="active">{{ el.idcheck }}</td>
 
-{% if request.user.is_authenticated %}
-<h1></h1>
-{% else %}
-Авторизуйтеся , будь ласка
-{% endif %}
-
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 
 
 {% endblock %}

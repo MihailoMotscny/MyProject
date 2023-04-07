@@ -32,6 +32,7 @@ class MyidForm(ModelForm):
             "idcheck": TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'ID'
+
             })
 
         }
