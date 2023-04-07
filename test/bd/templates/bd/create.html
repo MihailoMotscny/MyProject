@@ -6,19 +6,13 @@
         <h1>Форма для створення оголошень</h1>
         <form method="post">
             {% csrf_token %}
+            {{ form.idcheck }}<br>
             {{ form.name_company }}<br>
             {{ form.culture }}<br>
             {{ form.price }}<br>
             {{ form.date }}<br>
-            {{ form.idcheck }}<br>
-
-
 
             <span>{{ error }}</span>
-            <span>{{ user_i }}</span><br>
-            <span>{{ idfromform }}</span><br>
-
-
 
             <button class="btn btn-success" type="submit">Додати оголошення</button>
 

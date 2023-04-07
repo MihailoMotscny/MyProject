@@ -25,12 +25,12 @@ class MyidForm(ModelForm):
             }),
 
             "date": DateTimeInput(attrs={
-                'class': 'form-control',
+                'class': 'shos',
                 'placeholder': 'Дата'
             }),
 
             "idcheck": TextInput(attrs={
-                'class': 'form-control',
+                'class': 'shos',
                 'placeholder': 'ID'
 
             })

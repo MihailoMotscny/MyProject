@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate,login
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
 from django.shortcuts import render
+import datetime
 from .models import Artiles
 from idcheck.models import Myid
 from .forms import LoginForm
@@ -20,8 +21,7 @@ def home_prices(request):
 def profil(request):
     myid=request.user.id
     homeid = Myid.objects.all().filter(idcheck=myid)
-    for i in homeid:
-        print("Mi id is ",i)
+
     return render(request, 'bd/profil.html',{'homeid':homeid})
 
 
@@ -29,9 +29,11 @@ def profil(request):
 def create(request):
     error = ''
     user_id=''
+    dtatime= datetime.datetime.now()
     context = {}
     initial_dict = {
-        'idcheck': request.user.id
+        'idcheck': request.user.id,
+        'date':dtatime
     }
 
     user_id=initial_dict
